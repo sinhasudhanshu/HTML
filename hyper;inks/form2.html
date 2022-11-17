@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function saveData() {
+            let value = document.getElementById("txtName").value;
+            localStorage.setItem("txtName", value);
+
+        }
+        function getData() {
+            let value = localStorage.getItem("txtName");
+            //alert(value);
+            document.getElementById("txtName").value = value;
+        }
+    </script>
+</head>
+
+<body>
+    <br>
+    <h1>Form</h1>
+    <p>It's quick and easy.
+    <p>
+        <input id="txtName" onkeyup="saveData()" onchange="saveData()" placeholder="first name" type="text">
+        <br>
+        <input placeholder="surname" type="text">
+
+        <input onclick="getData();" type="button" value=" singup">
+        <script>
+
+            getData();
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         function saveData() {
+            let value = document.getElementById("save").value;
+            alert(value);
+            localStorage.setItem("firstname", value);
+
+        }
+        function clearData() {
+             
+            localStorage.clear();
+
+        }
+        function retriveData() {
+            
+           let value= localStorage.getItem("firstname");
+           alert(value);
+           document.getElementById("save").value=value;
+
+        }
+       
+    </script>
+</head>
+<body>
+    <input id="save" placeholder="first name" type="text" >
+    <br>
+    <input  onclick="saveData();" type="button" value="save">
+    <input  onclick="clearData();" type="button" value="clear">
+    <input  onclick="retriveData();" type="button" value="retrive">
+    <br>
+    <input type="radio">
+    <input type="radio">
+</body>
+</html>

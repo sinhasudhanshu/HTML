@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function saveData() {
+            let radiobuttons=document.getElementsByName("sport");
+            let n=radiobuttons.length;
+            for(let i=0;i<=n-1;i++)
+            {
+                let radiobutton=radiobuttons[i];
+                console.log(radiobutton.id + " : " + radiobutton.checked);
+                localStorage.setItem(radiobutton.id,radiobutton.checked);
+            }
+
+        }
+        function clearData() {
+
+            localStorage.clear();
+
+        }
+        function retriveData() {
+
+            let value = localStorage.getItem("firstname");
+            alert(value);
+            document.getElementById("save").value = value;
+
+        }
+       
+    </script>
+</head>
+
+<body>
+    <input id="save" placeholder="first name" type="text">
+    <br>
+    <input onclick="saveData();" type="button" value="save">
+    <input onclick="clearData();" type="button" value="clear">
+    <input onclick="retriveData();" type="button" value="retrive">
+    <br>
+   <label> Cricket<input id="cricket" type="radio" name="sport"></label>
+    <br>
+    <label> Kabaddi<input id="kabaddi" type="radio" name="sport"></label>
+    <br>
+    <label> Golf<input id="golf" type="radio" name="sport"></label>
+    <br>
+    <label> Foot<input id="football" type="radio" name="sport">ball</label>
+    <br>
+</body>
+
+</html>

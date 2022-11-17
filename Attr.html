@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* Internal links, beginning with "#" */
+h1[title^="g"] {
+  background-color: gold;
+}
+
+h1[title*="b"] {
+  background-color: silver;
+}
+
+h1[title*="in" ] {
+  color: blue;
+}
+h1[title*="cAsE" ] {
+  color: pink;
+}
+h1[title$=".org"] {
+  color: red;
+}
+h1[title^="https"][title$=".org"] {
+  color: green;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+    <h1>ABC</h1>
+    <h1 title="good">ABC</h1>
+    <h1 title="bye">ABC</h1>
+    <h1 title="boot">booting</h1>
+    <h1 title="int">abc</h1>
+    <h1 title=" cAsE ">ABC</h1>
+    <h1 title=".org">ABC</h1>
+    <h1 title="https .org">ABC</h1>
+    
+
+
+
+    
+</body>
+</html>
