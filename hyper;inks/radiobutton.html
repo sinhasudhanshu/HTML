@@ -8,29 +8,44 @@
     <title>Document</title>
     <script>
         function saveData() {
-            let radiobuttons=document.getElementsByName("sport");
-            let n=radiobuttons.length;
-            for(let i=0;i<=n-1;i++)
-            {
-                let radiobutton=radiobuttons[i];
+            let radiobuttons = document.getElementsByName("sport");
+            let n = radiobuttons.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let radiobutton = radiobuttons[i];
                 console.log(radiobutton.id + " : " + radiobutton.checked);
-                localStorage.setItem(radiobutton.id,radiobutton.checked);
+                localStorage.setItem(radiobutton.id, radiobutton.checked);
             }
 
+
         }
+        function retrieveData() {
+            let radiobuttons = document.getElementsByName("sport");
+            let n = radiobuttons.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let radiobutton = radiobuttons[i];
+                value=localStorage.getItem(radiobutton.id);
+                console.log(radiobutton.id + " : " + value);
+                
+            }
+
+            
+
+        }
+
         function clearData() {
 
             localStorage.clear();
 
-        }
-        function retriveData() {
-
-            let value = localStorage.getItem("firstname");
-            alert(value);
-            document.getElementById("save").value = value;
 
         }
-       
+        // function retriveData() {
+
+        //     let value = localStorage.getItem("firstname");
+        //     alert(value);
+        //     document.getElementById("save").value = value;
+
+        // }
+
     </script>
 </head>
 
@@ -39,15 +54,15 @@
     <br>
     <input onclick="saveData();" type="button" value="save">
     <input onclick="clearData();" type="button" value="clear">
-    <input onclick="retriveData();" type="button" value="retrive">
+    <input onclick="retrieveData();" type="button" value="retrive">
     <br>
-   <label> Cricket<input id="cricket" type="radio" name="sport"></label>
+    <label> Cricket<input id="cricket" type="radio" name="sport"></label>
     <br>
     <label> Kabaddi<input id="kabaddi" type="radio" name="sport"></label>
     <br>
     <label> Golf<input id="golf" type="radio" name="sport"></label>
     <br>
-    <label> Foot<input id="football" type="radio" name="sport">ball</label>
+    <label> Football<input id="football" type="radio" name="sport"></label>
     <br>
 </body>
 
