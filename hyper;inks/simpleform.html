@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f() {
+            let list = document.getElementById("select");
+            let options = list.getElementsByTagName("option");
+            console.log(options.length);
+            let n = options.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let option = options[i];
+                console.log(option);
+                console.log(option.innerText);
+                console.log(option.value);
+            }
+            console.log(list.selectedIndex);
+        }
+
+        function saveData() {
+            let value = document.getElementById("save").value;
+            alert(value);
+            localStorage.setItem("firstname", value);
+            let radiobuttons = document.getElementsByName("sport");
+            let n = radiobuttons.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let radiobutton = radiobuttons[i];
+                console.log(radiobutton.id + " : " + radiobutton.checked);
+                localStorage.setItem(radiobutton.id, radiobutton.checked);
+            }
+
+            let list = document.getElementById("select");
+            localStorage.setItem("select", list.selectedIndex);
+
+        }
+        function clearData() {
+
+            localStorage.clear();
+
+        }
+        function retriveData() {
+
+            let value = localStorage.getItem("firstname");
+            //alert(value);
+            document.getElementById("save").value = value;
+
+            let index = localStorage.getItem("select");
+            document.getElementById("select").selectedIndex = index;
+
+            let radiobuttons = document.getElementsByName("sport");
+            let n = radiobuttons.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let radiobutton = radiobuttons[i];
+                value = localStorage.getItem(radiobutton.id);
+                if (value === "true")
+                    document.getElementById(radiobutton.id).checked = true;
+                console.log(radiobutton.id + " : " + value);
+
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <select id="select">
+        <option value="1">January</option>
+        <option value="2">february</option>
+        <option value="3">march</option>
+        <option value="4">april</option>
+
+    </select>
+    <br>
+
+    <input id="save" placeholder="first name" type="text">
+    <br>
+    <input type="button" value="Test" onclick="f()" />
+    <input onclick="saveData();" type="button" value="save">
+    <input onclick="clearData();" type="button" value="clear">
+    <input onclick="retriveData();" type="button" value="retrive">
+    <br>
+    <label>run<input id="run" type="radio" name="sport"></label>
+    <br>
+    <label>wicket<input id="wicket" type="radio" name="sport"></label>
+
+
+</body>
+
+</html>
