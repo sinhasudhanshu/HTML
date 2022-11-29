@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    let results=[
+    
+
+
+    ];
+        function saveData() {
+            let book1 = document.getElementById("book1").value;
+            let book2 = document.getElementById("book2").value;
+            let book3 = document.getElementById("book3").value;
+            result.book1 = Book1;
+            result.book2 = Book2;
+            result.book3 = Book3;
+            
+            localStorage.setItem("book", value);
+
+        
+        }
+        function retriveData() {
+            
+            let value= localStorage.getItem("book");
+            alert(value);
+            document.getElementById("book1").value=value;
+            document.getElementById("book2").value=value;
+            document.getElementById("book3").value=value;
+ 
+         }
+    </script>
+</head>
+<body>
+    <input id="book1" placeholder="book name" type="text" >
+    <br>
+    <input id="book2" placeholder="book name" type="text" >
+    <br>
+    <input id="book3" placeholder="book name" type="text" >
+    <br>
+    <input  onclick="saveData();" type="button" value="save">
+    <input  onclick="retriveData();" type="button" value="retrive">
+ 
+</body>
+</html>
