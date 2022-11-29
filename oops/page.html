@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Book</title>
+    <script>
+        let result = {
+            "name": "", "marks": "", "address": "",
+            isPassed: function () { return this.marks >= 40; }
+        }
+
+
+        function saveData() {
+            let name = document.getElementById("name").value;
+            let marks = document.getElementById("marks").value;
+            let address = document.getElementById("address").value;
+            result.name = name;
+            result.address = address;
+            result.marks = Number(marks);
+            let resultjson = JSON.stringify(result);
+            localStorage.setItem("result", resultjson);
+
+        }
+        function showData() {
+
+            document.getElementById("name").value = result.name;
+            document.getElementById("marks").value = result.marks;
+            document.getElementById("address").value = result.address;
+            document.getElementById("result").checked = result.isPassed();
+            //alert(result.isPassed());
+        }
+        function retrieveData() {
+            data = JSON.parse(localStorage.getItem("result"));
+            result.name = data.name;
+            result.address = data.address;
+            result.marks = data.marks;
+            showData();
+        }
+    </script>
+</head>
+
+<body>
+    <input onkeyup="saveData()" onchange="saveData()" id="name" placeholder="Name" type="text">
+    <input onkeyup="saveData()" onchange="saveData()" id="marks" placeholder="Marks" type="number">
+    <input onkeyup="saveData()" onchange="saveData()" id="address" placeholder="Address" type="text">
+    <br>
+    <input type="checkbox" id="result" />
+    <input onclick=" saveData();" type="button" value=" singup">
+    <script>
+        showData();
+        retrieveData();
+    </script>
+</body>
+</html>  
