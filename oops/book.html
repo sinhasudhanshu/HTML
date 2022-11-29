@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let books=[
+{
+name: "english",
+subject: "english",
+price: 80
+}
+,
+{
+    name: "hindi",
+    subject: "hindi",
+    price: 100
+
+},
+{
+    name: "math",
+    subject: "math",
+    price: 120
+
+}
+
+        ];
+            
+
+        function saveData() {
+            
+            let resultjson = JSON.stringify(books);
+            localStorage.setItem("books", resultjson);
+        }
+        function retrieveData() {
+            data = JSON.parse(localStorage.getItem("books"));
+            
+        }
+        function searchData() {
+            let searchname=document.getElementById("bookname").value;
+            console.log(searchname);
+            let n=books.length;
+            for(let i=0;i<=n-1;i++)
+            {
+                let book=books[i];
+                if(book.name==searchname)
+                {
+                    document.getElementById("price").value=book.price;
+                    document.getElementById("subject").value=book.subject;
+                    return;
+                    
+                }
+            } 
+            document.getElementById("price","subject").value="not found";
+
+            
+
+        }
+
+    </script>
+</head>
+<body>
+    <input onkeyup="searchData();" id="bookname"  placeholder="Book Name" type="text" >
+    <br>
+    <input  id="subject" placeholder="subject" type="text" >
+    <br>
+    <input  id="price" placeholder="price" type="text" >
+    <br>
+    <input onclick="saveData();" type="button" value="submit">
+    <input onclick="retrieveData();" type="button" value="retrieve">
+   
+</body>
+</html>
