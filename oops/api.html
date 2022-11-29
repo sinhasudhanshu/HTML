@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,33 +8,30 @@
     <title>Weather</title>
     <script>
 
-function getWeather()
-{
-    let value = document.getElementById("txtCityName").value;
-    //alert(value);
-     let weatherapi = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + value + "&appid=32b20e1d45a1df5d721b8176d5983a2c";
+        function getWeather() {
+            let value = document.getElementById("txtCityName").value;
+            //alert(value);
+            let weatherapi = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + value + "&appid=32b20e1d45a1df5d721b8176d5983a2c";
 
-let xhr=new XMLHttpRequest();
-xhr.open("get",weatherapi,true);
-xhr.onreadystatechange=function(){getResult(xhr);};
-xhr.send();
-
-    
-    
-}
-function getResult(xhr)
-{
-    if(xhr.readyState!=4)
-    return;
-    document.getElementById("d").innerHTML=xhr.responseText;
-}
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", weatherapi, true);
+            xhr.onreadystatechange = function () { getResult(xhr); };
+            xhr.send();
+        }
+        function getResult(xhr) {
+            if (xhr.readyState != 4)
+                return;
+            document.getElementById("d").innerHTML = xhr.responseText;
+        }
 
     </script>
 </head>
+
 <body>
 
     <input id="txtCityName" type="text">
     <input onclick="getWeather()" type="button" value="search">
     <div id="d"></div>
 </body>
+
 </html>
