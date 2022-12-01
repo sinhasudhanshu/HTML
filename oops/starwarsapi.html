@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <script>
+
+        function getStarwars() {
+
+            let n = document.getElementById("episodeId").value;
+            let starwarsapi = "http://swapi.dev/api/films/" + n + "/"
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", starwarsapi, true);
+            xhr.onreadystatechange = function () { getResult(xhr); };
+            xhr.send();
+        }
+        function getResult(xhr) {
+            if (xhr.readyState != 4)
+                return;
+            let result = xhr.responseText;
+            document.getElementById("movieName").innerHTML = result;
+            result = JSON.parse(result);
+            console.log(result)
+            document.getElementById("filmName").value = result.title;
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    Output<div id="movieName" type="text"></div>
+    <br>
+    Title<input type="text" id="filmName">
+    <br>
+    Episode Id <input type="text" id="episodeId">
+    <br>
+    <input onclick="getStarwars()" type="button" value="search">
+
+</body>
+
+</html>
