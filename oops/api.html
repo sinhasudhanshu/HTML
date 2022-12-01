@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
     <script>
 
         function getWeather() {
@@ -21,17 +26,35 @@
         function getResult(xhr) {
             if (xhr.readyState != 4)
                 return;
-            document.getElementById("d").innerHTML = xhr.responseText;
+                let result=xhr.responseText;
+                result=JSON.parse(result);
+                console.log(result.weather[0].description);
+                document.getElementById("description").value=result.weather[0].description;
+                document.getElementById("d").innerHTML = xhr.responseText;
+                console.log(result.coord);
+                document.getElementById("longitude").value=result.coord.lon;
+                console.log(result.coord);
+                document.getElementById("latitude").value=result.coord.lat;
+                let img=result.weather[0].icon;
+                document.getElementById("img").src="https://openweathermap.org/img/w/" + img + ".png";
+
         }
 
     </script>
 </head>
 
 <body>
+    <input type="text" id="longitude"/>
+    <input type="text" id="latitude"/>
+
+    <input type="text" id="description"/>
 
     <input id="txtCityName" type="text">
     <input onclick="getWeather()" type="button" value="search">
     <div id="d"></div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <img src="" id="img"/>
 </body>
 
 </html>
